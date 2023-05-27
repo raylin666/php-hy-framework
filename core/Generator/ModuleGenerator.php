@@ -42,9 +42,13 @@ class ModuleGenerator extends Generator
             $this->makeDirectory($path . '/' . $dir, true);
             // 创建基础文件
             switch ($dir) {
+                case 'Controller':
+                    $generator = make(ControllerGenerator::class);
+                    $generator->withModuleInfo($moduleInfo)->createModuleController();
+                    break;
                 case 'Model':
-                    $modelGen = make(ModelGenerator::class);
-                    $modelGen->withModuleInfo($moduleInfo)->createModuleModel();
+                    $generator = make(ModelGenerator::class);
+                    $generator->withModuleInfo($moduleInfo)->createModuleModel();
                     break;
                 default:
             }

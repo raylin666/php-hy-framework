@@ -99,7 +99,7 @@ class ModelGenerator extends Generator
 
         $class = 'Model';
         $this->withStub('parent_model.stub');
-        $this->withNamespace('App\\' . $this->moduleInfo->getName() . '\\Model');
+        $this->withNamespace('App\\' . $this->getModuleInfo()->getName() . '\\Model');
         $path = $this->convertPathByNamespace($this->getNamespace(), true) . '/' . $class . '.php';
         if (is_file($path)) {
             throw new RuntimeException(sprintf('%s 类已存在', $this->getNamespace()));
@@ -132,9 +132,9 @@ class ModelGenerator extends Generator
         $columns = $this->modelColumnsTransformByDbColumns($builder->getColumnTypeListing($table));
 
         $class = $modelOptionDecorator->getTableMapping()[$table] ?? Str::studly(Str::singular($table));
-        if ($this->moduleInfo instanceof ModuleInfoInterface) {
-            $result['module'] = $this->moduleInfo->getName();
-            $this->withNamespace('App\\' . $this->moduleInfo->getName() . '\\Model');
+        if ($this->getModuleInfo() instanceof ModuleInfoInterface) {
+            $result['module'] = $this->getModuleInfo()->getName();
+            $this->withNamespace('App\\' . $this->getModuleInfo()->getName() . '\\Model');
         } else {
             $this->withNamespace('Core\\Model');
         }

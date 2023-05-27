@@ -32,7 +32,7 @@ class ModelCommand extends BaseCommand
 
     protected string $description = '生成数据表模型';
 
-    protected string $help = '';
+    protected string $help = '[--path [PATH]] [--module [MODULE]] [-p|--pool [POOL]] [-F|--force-casts] [-P|--prefix [PREFIX]] [-i|--inheritance [INHERITANCE]] [-U|--uses [USES]] [-R|--refresh-fillable] [-M|--table-mapping [TABLE-MAPPING]] [--ignore-tables [IGNORE-TABLES]] [--with-comments] [--with-ide] [--visitors [VISITORS]] [--property-case [PROPERTY-CASE]] [--disable-event-dispatcher] [--] [<table>]';
 
     /**
      * @var ConfigInterface 配置类

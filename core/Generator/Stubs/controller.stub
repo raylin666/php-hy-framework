@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace %NAMESPACE%;
 
+%USES%
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
-class %CLASS%
+class %CLASS% extends Controller
 {
     public function index(RequestInterface $request, ResponseInterface $response)
     {
