@@ -1,43 +1,31 @@
-# Introduction
+# HY Web API 框架 (基于 Hyperf)
 
-This is a skeleton application using the Hyperf framework. This application is meant to be used as a starting place for those looking to get their feet wet with Hyperf Framework.
+### 获取项目
 
-# Requirements
-
-Hyperf has some requirements for the system environment, it can only run under Linux and Mac environment, but due to the development of Docker virtualization technology, Docker for Windows can also be used as the running environment under Windows.
-
-The various versions of Dockerfile have been prepared for you in the [hyperf/hyperf-docker](https://github.com/hyperf/hyperf-docker) project, or directly based on the already built [hyperf/hyperf](https://hub.docker.com/r/hyperf/hyperf) Image to run.
-
-When you don't want to use Docker as the basis for your running environment, you need to make sure that your operating environment meets the following requirements:  
-
- - PHP >= 8.0
- - Any of the following network engines
-   - Swoole PHP extension >= 4.5，with `swoole.use_shortname` set to `Off` in your `php.ini`
-   - Swow PHP extension (Beta)
- - JSON PHP extension
- - Pcntl PHP extension
- - OpenSSL PHP extension （If you need to use the HTTPS）
- - PDO PHP extension （If you need to use the MySQL Client）
- - Redis PHP extension （If you need to use the Redis Client）
- - Protobuf PHP extension （If you need to use the gRPC Server or Client）
-
-# Installation using Composer
-
-The easiest way to create a new Hyperf project is to use [Composer](https://getcomposer.org/). If you don't have it already installed, then please install as per [the documentation](https://getcomposer.org/download/).
-
-To create your new Hyperf project:
-
-```bash
-$ composer create-project hyperf/hyperf-skeleton path/to/install
+```shell
+git clone git@github.com:raylin666/php-hy-framework.git
 ```
 
-Once installed, you can run the server immediately using the command below.
+### 查看命令行列表
 
-```bash
-$ cd path/to/install
-$ php bin/hyperf.php start
+```shell
+php bin/server.php
 ```
 
-This will start the cli-server on port `9501`, and bind it to all network interfaces. You can then visit the site at `http://localhost:9501/`
+| 命令                    | 描述            |
+|-----------------------|---------------|
+| core:command          | 创建命令文件        |
+| core:jwt              | 生成 JWT 系统密钥   |
+| core:migrate-gen      | 生成数据表迁移文件     |
+| core:migrate-rollback | 运行模块的迁移回滚类    |
+| core:migrate-run      | 运行数据表迁移       |
+| core:model            | 生成数据表模型       |
+| core:module           | 生成业务模块/模块配置更新 |
+| core:seeder-gen       | 生成数据表迁移种子数据文件 |
+| core:seeder-run       | 运行数据表迁移种子数据   |
 
-which will bring up Hyperf default home page.
+### 启动服务
+
+```shell
+php bin/server.php start
+```

@@ -9,12 +9,10 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Process;
+namespace Core\Constants;
 
-use Hyperf\AsyncQueue\Process\ConsumerProcess;
-use Hyperf\Process\Annotation\Process;
-
-#[Process]
-class AsyncQueueConsumer extends ConsumerProcess
+class Constant
 {
+    // 启动命令
+    public const RUN_COMMAND = 'php bin/server.php';
 }

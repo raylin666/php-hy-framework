@@ -1,0 +1,38 @@
+<?php
+
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+namespace %NAMESPACE%;
+
+use Core\BaseCommand;
+use Core\Constants\Constant;
+use Hyperf\Command\Annotation\Command;
+
+#[Command]
+class %CLASS% extends BaseCommand
+{
+    protected ?string $name = BaseCommand::PREFIX_NAME . ':demo';
+
+    protected string $description = '创建一个 Demo 命令';
+
+    protected string $help = '';
+
+    public function configure()
+    {
+        parent::configure();
+        $this->setHelp(Constant::RUN_COMMAND . ' ' . $this->name . ' ' . $this->help);
+        $this->setDescription($this->description);
+    }
+
+    public function handle()
+    {
+        $this->info('Hello Raylin666! 这是一个 Demo 命令 ～');
+    }
+}

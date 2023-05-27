@@ -38,7 +38,7 @@ return [
         ],
         'commands' => [
             'gen:model' => [
-                'path' => 'app/Model',
+                'path' => '',
                 'force_casts' => true,
                 'inheritance' => 'Model',
                 'uses' => '',
