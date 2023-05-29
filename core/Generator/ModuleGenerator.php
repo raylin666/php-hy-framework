@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Core\Generator;
 
 use Core\Contract\ModuleInfoInterface;
-use Core\Module;
 use RuntimeException;
 
 use function Hyperf\Support\make;
@@ -45,6 +44,14 @@ class ModuleGenerator extends Generator
                 case 'Controller':
                     $generator = make(ControllerGenerator::class);
                     $generator->withModuleInfo($moduleInfo)->createModuleController();
+                    break;
+                case 'Service':
+                    $generator = make(ServiceGenerator::class);
+                    $generator->withModuleInfo($moduleInfo)->createModuleService();
+                    break;
+                case 'Logic':
+                    $generator = make(LogicGenerator::class);
+                    $generator->withModuleInfo($moduleInfo)->createModuleLogic();
                     break;
                 case 'Model':
                     $generator = make(ModelGenerator::class);
@@ -125,10 +132,11 @@ class ModuleGenerator extends Generator
         return [
             'Controller',
             'Model',
+            'Event',
             'Listener',
             'Request',
             'Service',
-            'Mapper',
+            'Logic',
             'Middleware',
         ];
     }

@@ -14,7 +14,7 @@ namespace Core\Generator;
 use Core\Contract\ModuleInfoInterface;
 use RuntimeException;
 
-class ControllerGenerator extends Generator
+class LogicGenerator extends Generator
 {
     protected ?ModuleInfoInterface $moduleInfo = null;
 
@@ -35,9 +35,9 @@ class ControllerGenerator extends Generator
     }
 
     /**
-     * 创建业务模块父级控制器.
+     * 创建业务模块父级逻辑层.
      */
-    public function createModuleController(): array
+    public function createModuleLogic(): array
     {
         // 未设置 Module 暂不支持创建
         if (empty($this->getModuleInfo())) {
@@ -48,9 +48,9 @@ class ControllerGenerator extends Generator
             throw new RuntimeException('业务模块名称为空');
         }
 
-        $class = 'Controller';
-        $this->withStub('init/controller.stub');
-        $this->withNamespace('App\\' . $this->moduleInfo->getName() . '\\Controller');
+        $class = 'Logic';
+        $this->withStub('init/logic.stub');
+        $this->withNamespace('App\\' . $this->moduleInfo->getName() . '\\Logic');
         $path = $this->convertPathByNamespace($this->getNamespace(), true) . '/' . $class . '.php';
         if (is_file($path)) {
             throw new RuntimeException(sprintf('%s 类已存在', $this->getNamespace()));
@@ -71,9 +71,9 @@ class ControllerGenerator extends Generator
     }
 
     /**
-     * 创建业务模块控制器.
+     * 创建业务模块逻辑层.
      */
-    public function createController(string $name, ?string $path = null): array
+    public function createLogic(string $name, ?string $path = null): array
     {
         if (! $this->getModuleInfo() instanceof ModuleInfoInterface) {
             throw new RuntimeException('请调用 withModuleInfo 函数设置业务模块信息');
@@ -85,17 +85,17 @@ class ControllerGenerator extends Generator
 
         $uses = '';
         $class = ucfirst($name);
-        $this->withStub('controller.stub');
-        $this->withNamespace('App\\' . $this->getModuleInfo()->getName() . '\\Controller');
+        $this->withStub('logic.stub');
+        $this->withNamespace('App\\' . $this->getModuleInfo()->getName() . '\\Logic');
         if ($path) {
-            $uses = $this->getNamespace() . '\\Controller';
+            $uses = $this->getNamespace() . '\\Logic';
             $this->withNamespace($this->convertNamespaceByPath($path));
         }
 
         $namespace = $this->getNamespace();
         $path = $this->convertPathByNamespace($namespace, true) . '/' . $class . '.php';
         if (file_exists($path)) {
-            throw new RuntimeException(sprintf('业务模块控制器 %s 已存在', $namespace));
+            throw new RuntimeException(sprintf('业务模块逻辑层类 %s 已存在', $namespace));
         }
 
         $this->makeDirectory($path);

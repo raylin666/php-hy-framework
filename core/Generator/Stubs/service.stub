@@ -12,13 +12,14 @@ declare(strict_types=1);
 namespace %NAMESPACE%;
 
 %USES%
-use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Contract\ResponseInterface;
+use Core\Contract\LogicInterface;
 
-class %CLASS% extends Controller
+class %CLASS% extends Service
 {
-    public function index(RequestInterface $request, ResponseInterface $response)
+    public function initializeLogic(): ?LogicInterface
     {
-        return $response->raw('Hello Raylin666!');
+        // TODO: Implement initializeLogic() method.
+
+        return null;
     }
 }

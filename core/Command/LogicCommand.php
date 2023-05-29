@@ -13,7 +13,7 @@ namespace Core\Command;
 
 use Core\BaseCommand;
 use Core\Constants\Constant;
-use Core\Generator\ControllerGenerator;
+use Core\Generator\LogicGenerator;
 use Core\GeneratorCommand;
 use Hyperf\Command\Annotation\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -21,11 +21,11 @@ use Symfony\Component\Console\Input\InputOption;
 use function Hyperf\Support\make;
 
 #[Command]
-class ControllerCommand extends GeneratorCommand
+class LogicCommand extends GeneratorCommand
 {
-    protected ?string $name = BaseCommand::PREFIX_NAME . ':controller';
+    protected ?string $name = BaseCommand::PREFIX_NAME . ':logic';
 
-    protected string $description = '生成控制器命令';
+    protected string $description = '生成业务逻辑层命令';
 
     protected string $help = '[-M|--module [MODULE]] [--path [PATH]] [--disable-event-dispatcher] [--] <name>';
 
@@ -46,9 +46,9 @@ class ControllerCommand extends GeneratorCommand
             return;
         }
 
-        $generator = make(ControllerGenerator::class);
-        $result = $generator->withModuleInfo($moduleInfo)->createController($this->getNameInput(), $path);
-        $this->info(sprintf("业务模块控制器 %s 创建成功\n命名空间: %s\n模块位置: %s", $moduleInfo->getName(), $result['namespace'], $result['path']));
+        $generator = make(LogicGenerator::class);
+        $result = $generator->withModuleInfo($moduleInfo)->createLogic($this->getNameInput(), $path);
+        $this->info(sprintf("业务模块逻辑层 %s 创建成功\n命名空间: %s\n模块位置: %s", $moduleInfo->getName(), $result['namespace'], $result['path']));
     }
 
     /**

@@ -9,14 +9,14 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace %NAMESPACE%;
+namespace Core\Abstract;
 
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Container\ContainerInterface;
 
-abstract class %CLASS%
+abstract class ControllerAbstract
 {
     #[Inject]
     protected ContainerInterface $container;

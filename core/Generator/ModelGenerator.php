@@ -98,7 +98,7 @@ class ModelGenerator extends Generator
         }
 
         $class = 'Model';
-        $this->withStub('parent_model.stub');
+        $this->withStub('init/model.stub');
         $this->withNamespace('App\\' . $this->getModuleInfo()->getName() . '\\Model');
         $path = $this->convertPathByNamespace($this->getNamespace(), true) . '/' . $class . '.php';
         if (is_file($path)) {
