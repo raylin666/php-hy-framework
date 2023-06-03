@@ -23,8 +23,10 @@ php bin/server.php
 | core:migrate-run      | 运行数据表迁移       |
 | core:model            | 生成数据表模型       |
 | core:module           | 生成业务模块/模块配置更新 |
+| core:request          | 生成请求数据验证器命令   |
 | core:seeder-gen       | 生成数据表迁移种子数据文件 |
 | core:seeder-run       | 运行数据表迁移种子数据   |
+| core:service          | 生成服务层命令       |
 
 ##### 业务模块目录
 

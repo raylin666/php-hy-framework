@@ -53,6 +53,10 @@ class ModuleGenerator extends Generator
                     $generator = make(LogicGenerator::class);
                     $generator->withModuleInfo($moduleInfo)->createModuleLogic();
                     break;
+                case 'Request':
+                    $generator = make(FormRequestGenerator::class);
+                    $generator->withModuleInfo($moduleInfo)->createModuleRequest();
+                    break;
                 case 'Model':
                     $generator = make(ModelGenerator::class);
                     $generator->withModuleInfo($moduleInfo)->createModuleModel();
