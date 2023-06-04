@@ -31,4 +31,9 @@ class ErrorCode extends AbstractConstants
      * @Message("Method Not Allowed")
      */
     public const METHOD_NOT_ALLOWED_ERROR = 405;
+
+    /**
+     * @Message("Unprocessable Entity")
+     */
+    public const UNPROCESSABLE_ENTITY_ERROR = 422;
 }

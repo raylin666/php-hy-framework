@@ -15,7 +15,7 @@ use Core\Contract\LogicInterface;
 
 abstract class ServiceAbstract
 {
-    protected LogicInterface $logic;
+    protected ?LogicInterface $logic;
 
     public function __construct()
     {

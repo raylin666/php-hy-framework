@@ -13,17 +13,16 @@ namespace %NAMESPACE%;
 
 %USES%
 use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Contract\ResponseInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class %CLASS% extends Controller
 {
     /**
      * @param RequestInterface  $request
-     * @param ResponseInterface $response
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
-    public function index(RequestInterface $request, ResponseInterface $response)
+    public function index(RequestInterface $request): ResponseInterface
     {
-        return $response->raw('Hello Raylin666!');
+        return $this->response->raw('Hello Raylin666!');
     }
 }
