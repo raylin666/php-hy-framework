@@ -18,7 +18,17 @@ use Hyperf\Constants\Annotation\Constants;
 class ErrorCode extends AbstractConstants
 {
     /**
-     * @Message("Server Error！")
+     * @Message("Internal Server Error")
      */
     public const SERVER_ERROR = 500;
+
+    /**
+     * @Message("Not Found")
+     */
+    public const NOT_FOUND_ERROR = 404;
+
+    /**
+     * @Message("Method Not Allowed")
+     */
+    public const METHOD_NOT_ALLOWED_ERROR = 405;
 }

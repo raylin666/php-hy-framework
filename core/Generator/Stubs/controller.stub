@@ -17,6 +17,11 @@ use Hyperf\HttpServer\Contract\ResponseInterface;
 
 class %CLASS% extends Controller
 {
+    /**
+     * @param RequestInterface  $request
+     * @param ResponseInterface $response
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function index(RequestInterface $request, ResponseInterface $response)
     {
         return $response->raw('Hello Raylin666!');

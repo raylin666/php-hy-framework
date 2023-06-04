@@ -9,10 +9,10 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-use Hyperf\HttpServer\Router\Router;
+namespace Core\Constants;
 
-// 公共路由
-Router::addGroup('/', function () {
-    include_once 'routes/base.php';
-});
-
+class Log
+{
+    // 公共异常日志
+    public const APP_EXCEPTION = 'exception';
+}

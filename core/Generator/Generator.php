@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace Core\Generator;
 
+use Core\Helper\ApplicationHelper;
 use Core\Module;
 use Hyperf\CodeParser\Project;
 use Hyperf\Contract\ConfigInterface;
@@ -214,7 +215,7 @@ abstract class Generator
      */
     protected function openWithIde(string $path): void
     {
-        $ide = (string) container()->get(ConfigInterface::class)->get('devtool.ide');
+        $ide = (string) ApplicationHelper::getConfig()->get('devtool.ide');
         $openEditorUrl = $this->getEditorUrl($ide);
 
         if (! $openEditorUrl) {

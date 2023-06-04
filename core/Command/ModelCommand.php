@@ -15,6 +15,7 @@ use Core\BaseCommand;
 use Core\Constants\Constant;
 use Core\Decorator\ModelOptionDecorator;
 use Core\Generator\ModelGenerator;
+use Core\Helper\ApplicationHelper;
 use Core\Helper\ConsoleTableHelper;
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Contract\ConfigInterface;
@@ -66,7 +67,7 @@ class ModelCommand extends BaseCommand
 
     public function run(InputInterface $input, OutputInterface $output): int
     {
-        $this->config = container()->get(ConfigInterface::class);
+        $this->config = ApplicationHelper::getConfig();
         return parent::run($input, $output);
     }
 

@@ -9,16 +9,4 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-use Hyperf\Context\ApplicationContext;
-use Psr\Container\ContainerInterface;
 
-if (! function_exists('container')) {
-    /**
-     * 获取容器实例.
-     * @return ContainerInterface
-     */
-    function container(): ContainerInterface
-    {
-        return ApplicationContext::getContainer();
-    }
-}

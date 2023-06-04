@@ -9,9 +9,9 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-use Core\Contract\ModuleInfoInterface;
-use Core\Decorator\ModuleInfoDecorator;
 
 return [
-    ModuleInfoInterface::class => ModuleInfoDecorator::class,
+    Core\Contract\ModuleInfoInterface::class => Core\Decorator\ModuleInfoDecorator::class,
+    Hyperf\HttpServer\Contract\ResponseInterface::class => Core\Dependencies\Response::class,
+    Hyperf\HttpServer\CoreMiddleware::class => Core\Middleware\HttpCoreMiddleware::class,
 ];

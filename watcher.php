@@ -9,10 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-use Hyperf\HttpServer\Router\Router;
+putenv('SCAN_CACHEABLE=(true)');
 
-// 公共路由
-Router::addGroup('/', function () {
-    include_once 'routes/base.php';
-});
-
+require_once __DIR__ . '/bin/server.php';

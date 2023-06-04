@@ -342,7 +342,10 @@ class ModelUpdateVisitorHelper extends NodeVisitorAbstract
     {
         return match ($type) {
             'tinyint', 'smallint', 'mediumint', 'int', 'bigint' => 'integer',
+            'decimal' => 'decimal:2',
+            'float', 'double', 'real' => 'float',
             'bool', 'boolean' => 'boolean',
+            'json' => 'array',
             default => null,
         };
     }
@@ -353,12 +356,22 @@ class ModelUpdateVisitorHelper extends NodeVisitorAbstract
             $cast = $this->formatDatabaseType($type) ?? 'string';
         }
 
-        return match ($cast) {
-            'integer' => 'int',
-            'date', 'datetime' => '\Carbon\Carbon',
-            'json' => 'array',
-            default => $cast,
-        };
+        switch ($cast) {
+            case 'integer':
+                return 'int';
+            case 'date':
+            case 'datetime':
+                return '\Carbon\Carbon';
+            case 'json':
+                return 'array';
+        }
+
+        if (Str::startsWith($cast, 'decimal')) {
+            // 如果 cast 为 decimal，则 @property 改为 string
+            return 'string';
+        }
+
+        return $cast;
     }
 
     protected function getCollectionClass($className): string

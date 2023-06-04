@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core;
 
 use Core\Contract\ModuleInfoInterface;
+use Core\Helper\ApplicationHelper;
 use Hyperf\Support\Filesystem\Filesystem;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -74,7 +75,7 @@ class Module
     protected function scanModule(): void
     {
         $modules = glob(self::getPath() . '*');
-        $fs = container()->get(Filesystem::class);
+        $fs = ApplicationHelper::getContainer()->get(Filesystem::class);
         foreach ($modules as &$mod) {
             if (is_dir($mod)) {
                 $modInfo = $mod . '/config.json';

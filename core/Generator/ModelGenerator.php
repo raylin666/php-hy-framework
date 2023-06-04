@@ -14,6 +14,7 @@ namespace Core\Generator;
 use Core\Contract\ModuleInfoInterface;
 use Core\Decorator\ModelDataDecorator;
 use Core\Decorator\ModelOptionDecorator;
+use Core\Helper\ApplicationHelper;
 use Core\Helper\ModelUpdateVisitorHelper;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Database\Commands\Ast\GenerateModelIDEVisitor;
@@ -56,7 +57,7 @@ class ModelGenerator extends Generator
     {
         parent::__construct();
 
-        $container = container();
+        $container = ApplicationHelper::getContainer();
         $this->resolver = $container->get(ConnectionResolverInterface::class);
         $this->config = $container->get(ConfigInterface::class);
         $this->lexer = new Emulative([

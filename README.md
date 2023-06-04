@@ -159,5 +159,13 @@ class UserService
 ### 启动服务
 
 ```shell
+// 普通启动
 php bin/server.php start
+
+// 热更新启动
+php bin/server.php server:watch
 ```
+
+> curl 127.0.0.1:9501/heartbeat
+
+响应 `PONE` 表示服务启动成功 ~
