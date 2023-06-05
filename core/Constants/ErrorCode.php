@@ -23,6 +23,11 @@ class ErrorCode extends AbstractConstants
     public const SERVER_ERROR = 500;
 
     /**
+     * @Message("Bad Request")
+     */
+    public const BAD_REQUEST_ERROR = 400;
+
+    /**
      * @Message("Not Found")
      */
     public const NOT_FOUND_ERROR = 404;
