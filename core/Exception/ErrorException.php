@@ -11,18 +11,17 @@ declare(strict_types=1);
  */
 namespace Core\Exception;
 
-use Core\Constants\HttpErrorCode;
-use Hyperf\Server\Exception\ServerException;
+use Core\Constants\ErrorCode;
 use Throwable;
 
-class RuntimeException extends ServerException
+class ErrorException extends RuntimeException
 {
     public function __construct(int $code = 0, ?string $message = null, ?Throwable $previous = null)
     {
         if (is_null($message)) {
-            $message = HttpErrorCode::getMessage($code);
+            $message = ErrorCode::getMessage($code);
         }
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct($code, $message, $previous);
     }
 }

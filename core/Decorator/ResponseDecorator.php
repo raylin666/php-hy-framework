@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 namespace Core\Decorator;
 
-use Core\Constants\ErrorCode;
+use Core\Constants\HttpErrorCode;
 
 class ResponseDecorator
 {
@@ -33,7 +33,7 @@ class ResponseDecorator
     public function withCode(int $code): self
     {
         $this->code = $code;
-        $this->message = ErrorCode::getMessage($code);
+        $this->message = HttpErrorCode::getMessage($code);
         ($code !== self::OK_CODE) && $this->ok = false;
         return $this;
     }

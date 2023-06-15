@@ -10,6 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 use Core\Helper\ApplicationHelper;
+use Core\Exception\BusinessException;
 use Hyperf\Contract\TranslatorInterface;
 use Hyperf\HttpServer\Contract\RequestInterface;
 
@@ -23,5 +24,15 @@ if (! function_exists('t')) {
         $acceptLanguage = ApplicationHelper::getContainer()->get(RequestInterface::class)->getHeaderLine('Accept-Language');
         $language = ! empty($acceptLanguage) ? explode(',', $acceptLanguage)[0] : 'zh_CN';
         return ApplicationHelper::getContainer()->get(TranslatorInterface::class)->trans($key, $replace, $language);
+    }
+}
+
+if (! function_exists('error')) {
+    /**
+     * 抛出业务异常函数.
+     */
+    function error(int $code, ?string $message = null)
+    {
+        throw new BusinessException($code, $message);
     }
 }

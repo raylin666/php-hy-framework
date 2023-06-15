@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 namespace Core\Middleware;
 
-use Core\Constants\ErrorCode;
+use Core\Constants\HttpErrorCode;
 use Core\Decorator\ResponseDecorator;
 use Core\Helper\ApplicationHelper;
 use Hyperf\Codec\Json;
@@ -45,7 +45,7 @@ class HttpCoreMiddleware extends CoreMiddleware
      */
     protected function handleNotFound(ServerRequestInterface $request): ResponseInterface
     {
-        $code = ErrorCode::NOT_FOUND_ERROR;
+        $code = HttpErrorCode::HTTP_NOT_FOUND;
         $decorator = make(ResponseDecorator::class);
         $decorator->withCode($code);
         return $this->response()
@@ -60,10 +60,10 @@ class HttpCoreMiddleware extends CoreMiddleware
      */
     protected function handleMethodNotAllowed(array $methods, ServerRequestInterface $request): ResponseInterface
     {
-        $code = ErrorCode::METHOD_NOT_ALLOWED_ERROR;
+        $code = HttpErrorCode::HTTP_METHOD_NOT_ALLOWED;
         $decorator = make(ResponseDecorator::class);
         $decorator->withCode($code);
-        $decorator->withMessage(ErrorCode::getMessage($code) . ', Allow: ' . implode(', ', $methods));
+        $decorator->withMessage(HttpErrorCode::getMessage($code) . ', Allow: ' . implode(', ', $methods));
         return $this->response()
             ->withHeader('Server', ApplicationHelper::getConfig()->get('http.server'))
             ->withAddedHeader('Content-Type', ApplicationHelper::getConfig()->get('http.content-type'))

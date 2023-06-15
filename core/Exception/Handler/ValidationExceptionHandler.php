@@ -20,7 +20,7 @@ declare(strict_types=1);
  */
 namespace Core\Exception\Handler;
 
-use Core\Constants\ErrorCode;
+use Core\Constants\HttpErrorCode;
 use Core\Decorator\ResponseDecorator;
 use Core\Helper\ApplicationHelper;
 use Hyperf\Codec\Json;
@@ -37,7 +37,7 @@ class ValidationExceptionHandler extends ExceptionHandler
     public function handle(Throwable $throwable, ResponseInterface $response): ResponseInterface
     {
         $this->stopPropagation();
-        $code = ErrorCode::UNPROCESSABLE_ENTITY_ERROR;
+        $code = HttpErrorCode::HTTP_UNPROCESSABLE_ENTITY;
         /** @var ValidationException $throwable */
         $message = $throwable->validator->errors()->first();
         $decorator = make(ResponseDecorator::class);

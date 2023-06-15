@@ -29,27 +29,4 @@ abstract class Model extends BaseModel implements CacheableInterface
     {
         parent::__construct($attributes);
     }
-
-    /**
-     * 设置主键的值
-     */
-    public function setPrimaryKeyValue(int|string $value): void
-    {
-        $this->{$this->primaryKey} = $value;
-    }
-
-    public function getPrimaryKeyType(): string
-    {
-        return $this->keyType;
-    }
-
-    public function save(array $options = []): bool
-    {
-        return parent::save($options);
-    }
-
-    public function update(array $attributes = [], array $options = []): bool
-    {
-        return parent::update($attributes, $options);
-    }
 }

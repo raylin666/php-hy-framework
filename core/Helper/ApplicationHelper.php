@@ -15,6 +15,7 @@ use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Logger\LoggerFactory;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 
 class ApplicationHelper
@@ -39,8 +40,16 @@ class ApplicationHelper
     /**
      * 获取日志实例.
      */
-    public static function getLogger(): LoggerInterface
+    public static function getLogger(): LoggerInterface|LoggerFactory
     {
         return self::getContainer()->get(LoggerFactory::class);
+    }
+
+    /**
+     * 获取服务请求实例.
+     */
+    public static function getServerRequest(): ServerRequestInterface
+    {
+        return self::getContainer()->get(ServerRequestInterface::class);
     }
 }
