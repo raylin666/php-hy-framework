@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace Core\Abstract;
 
+use Core\Contract\BusinessAttributesInterface;
 use Hyperf\Context\Context;
 use Core\Contract\LogicInterface;
 
@@ -30,11 +31,11 @@ abstract class LogicAbstract implements LogicInterface
     /**
      * 把数据设置为类属性.
      */
-    public function setAttributes(array $data)
+    public function setAttributes(array $data): void
     {
         // TODO: Implement setAttributes() method.
 
-        Context::set('attributes', $data);
+        Context::set(BusinessAttributesInterface::class, $data);
     }
 
     /**
@@ -44,6 +45,6 @@ abstract class LogicAbstract implements LogicInterface
     {
         // TODO: Implement getAttributes() method.
 
-        return Context::get('attributes', []);
+        return Context::get(BusinessAttributesInterface::class, []);
     }
 }

@@ -53,7 +53,7 @@ php bin/server.php
 > `Controller` => `Service` => `Logic` => `Model`
 
 1. 控制器(`Controller`) 调用 服务层(`Service`)
-2. 服务层(`Service`) 调用 业务逻辑层(`Logic`)
+2. 服务层(`Service`) 调用 业务逻辑层(`Logic`), 通过 #[Inject] 注解将具体的 `Logic` 注入到 `Service` 即可
 3. 业务逻辑层(`Logic`) 调用 模型层(`Model`)
 
 ##### 路由使用

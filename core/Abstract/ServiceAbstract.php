@@ -11,21 +11,40 @@ declare(strict_types=1);
  */
 namespace Core\Abstract;
 
-use Core\Contract\LogicInterface;
+use Core\Contract\BusinessAttributesInterface;
+use Core\Contract\ServiceInterface;
+use Hyperf\Context\Context;
 
-abstract class ServiceAbstract
+abstract class ServiceAbstract implements ServiceInterface
 {
-    protected ?LogicInterface $logic;
-
-    public function __construct()
+    /**
+     * 魔术方法，从类属性里获取数据.
+     * @return mixed|string
+     */
+    public function __get(string $name)
     {
-        $this->logic = $this->initializeLogic();
+        // TODO: Implement __get() method.
+
+        return $this->getAttributes()[$name] ?? '';
     }
 
-    public function getLogic(): ?LogicInterface
+    /**
+     * 把数据设置为类属性.
+     */
+    public function setAttributes(array $data): void
     {
-        return $this->logic;
+        // TODO: Implement setAttributes() method.
+
+        Context::set(BusinessAttributesInterface::class, $data);
     }
 
-    abstract protected function initializeLogic(): ?LogicInterface;
+    /**
+     * 获取数据.
+     */
+    public function getAttributes(): array
+    {
+        // TODO: Implement getAttributes() method.
+
+        return Context::get(BusinessAttributesInterface::class, []);
+    }
 }
